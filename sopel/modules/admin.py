@@ -101,20 +101,18 @@ def _part(bot, channel, msg=None, save=True):
             _set_config_channels(bot, channels)
 
 
-@sopel.module.require_privmsg
-@sopel.module.require_admin
-@sopel.module.commands('join')
+@sopel.module.require_admin('Login as an administrator to perform this action')
+@sopel.module.commands('add')
 @sopel.module.priority('low')
-@sopel.module.example('.join #example key', user_help=True)
-@sopel.module.example('.join #example', user_help=True)
+@sopel.module.example('.add #example key', user_help=True)
+@sopel.module.example('.add #example', user_help=True)
 def join(bot, trigger):
     """Join the specified channel. This is an admin-only command."""
     channel, key = trigger.group(3), trigger.group(4)
     _join(bot, channel, key)
 
 
-@sopel.module.require_privmsg
-@sopel.module.require_admin
+@sopel.module.require_admin('Login as an administrator to perform this action')
 @sopel.module.commands('tmpjoin')
 @sopel.module.priority('low')
 @sopel.module.example('.tmpjoin #example or .tmpjoin #example key')
@@ -128,8 +126,7 @@ def temporary_join(bot, trigger):
     _join(bot, channel, key, save=False)
 
 
-@sopel.module.require_privmsg
-@sopel.module.require_admin
+@sopel.module.require_admin('Login as an administrator to perform this action')
 @sopel.module.commands('part')
 @sopel.module.priority('low')
 @sopel.module.example('.part #example')
@@ -139,8 +136,7 @@ def part(bot, trigger):
     _part(bot, channel, part_msg)
 
 
-@sopel.module.require_privmsg
-@sopel.module.require_admin
+@sopel.module.require_admin('Login as an administrator to perform this action')
 @sopel.module.commands('tmppart')
 @sopel.module.priority('low')
 @sopel.module.example('.tmppart #example')
