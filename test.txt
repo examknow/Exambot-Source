@@ -1,1 +1,0 @@
-this is a test of the IRC webhook it does not pretain to the bot in any way
