@@ -40,14 +40,6 @@ def mhphab(bot, trigger):
 def wmphab(bot, trigger):
         bot.reply('http://phabricator.wikimedia.org/' + trigger.group(2))
 
-@module.commands('github', 'gh')
-@module.example('.github <username>')
-def ghuser(bot, trigger):
-    try:
-        bot.say("https://github.com/" + trigger.group(2))
-    except TypeError:
-        bot.say('Syntax: .github <username>', trigger.sender)
-
 @module.commands('mh')
 @module.example('.mh <wiki name> <page name>')
 def mhwiki(bot, trigger):
