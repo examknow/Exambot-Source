@@ -1,3 +1,10 @@
+#################################################################
+# Created 11.6.2019                                             #
+# Authored by Examknow for the ExamBot IRC bot                  #
+# (https://github.com/examknow/Exambot-Source)                  #
+# Any removal or modification of this header is a violation     #
+# of the copyright licence                                      #
+#################################################################
 from sopel import module
 
 @module.commands('about')
