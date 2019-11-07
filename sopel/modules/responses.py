@@ -1,15 +1,15 @@
-"""This module sends responses to frequently posted messages at #miraheze."""
+"""This module is based off of the responses module from ZppixBot (https://github.com/Pix1234/ZppixBot-Source)"""
 
 from sopel.module import commands import example
 
 @commands('request')
-@example('.request')
+@example('.request <channel>')
 def addchan(bot, trigger):
     """Reply to channel request message."""
-    bot.say(("Pining RhinosF1 and Examknow to let them know of your request")),
-            '#XtremeBNC')
-    if trigger.sender != '#ZppixBot':
-        bot.reply("Request sent! Action upon the request should be taken shortly. Thank you for using Xtreme")
+    bot.say(("Examknow: " + trigger.nick + "has requested ExamBot on " + trigger.group(2) + " would you like me to join the channel?"  )),
+            '#ExamBot')
+    if trigger.sender != '#ExamBot':
+        bot.reply("A requests has been sent to the administrators of the bot")
 
 
 @commands('gj', 'gw')
