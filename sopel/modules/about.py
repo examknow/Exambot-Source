@@ -18,6 +18,7 @@ def about(bot, trigger):
     else
       bot.say("I am running ExamBot version 3.0.1 . If I am acting unstable please alert Examknow, my operator. For help say .about help. For a link to my source code on GitHub say .source . Thank you for choosing ExamBot.")
 
+
 @module.commands('source', 'repo')
 def source(bot, trigger):
   bot.say("My source code is avalible at https://github.com/Exambot-Source")
