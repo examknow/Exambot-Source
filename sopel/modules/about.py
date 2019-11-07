@@ -12,10 +12,10 @@ from sopel import module
 @module.example('.about help')
 def about(bot, trigger):
     argument = trigger.group(2)
-    if argument == help
-      bot.say("Examknow: I just recived a help request from " + trigger.nick + " in " + trigger.sender)
-      bot.say("Help can be by saying .help in any ExamBot channel or ask an admin in #ExamBot")
-    else
+    if argument == 'help':
+      bot.say("Examknow: I just recived a help request from " + trigger.nick + " in " + trigger.sender) #needs a second parmater for channel as with other 3
+      bot.say("Help can be requested by saying .help in any ExamBot channel or ask an admin in #ExamBot") #poor english
+    else:
       bot.say("I am running ExamBot version 3.0.1 . If I am acting unstable please alert Examknow, my operator. For help say .about help. For a link to my source code on GitHub say .source . Thank you for choosing ExamBot.")
 
 
