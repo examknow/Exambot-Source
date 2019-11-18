@@ -40,6 +40,8 @@ def get_chanops(bot, trigger):
 	chanops = ['Examknow', 'RhinosF1']
     elif str(trigger.sender) == '#XtremeBNC-staff':
 	chanops = ['Examknow', 'RhinosF1']
+    elif str(trigger.sender) == '#XtremeBNC-feed':
+	chanops = ['Examknow', 'RhinosF1']
     else:
         bot.say('Please ask a bot admininstrator to set up channel management for this channel', trigger.sender)
     return chanops
