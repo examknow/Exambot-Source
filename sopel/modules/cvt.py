@@ -4,6 +4,8 @@
 #                ANY REMOVAL OR MODIFICATION                   #
 #       OF THIS HEADER IS A VIOLATION OF THE COPYING LICENCE   #
 ################################################################
+
+import sopel
 from sopel import module
 from mwclient import Site
 import logging
@@ -24,16 +26,13 @@ wikis = config['wikis']
 ua = 'ExamBot 3.0 (examknow@xtremebnc.ml)'
 
 def noaccount(bot, trigger):
-	bot.say(trigger.hostmask + ' is not identified with services.' 
-	+ 'This incident will be reported', trigger.sender)
-	bot.say('Security Alert: ' + trigger.hostmask + ' on' + trigger.sender 
-	+ ' attempted to use CVT without identifying with serivces.', #ExamBot-logs)
+	bot.say(trigger.hostmask + ' is not identified with services. This incident will be reported', trigger.sender)
+	bot.say('Security Alert: ' + trigger.hostmask + ' on' + trigger.sender + ' attempted to use CVT without identifying with serivces.', #ExamBot-logs)
 
-@module.commands('block')
-@module.example('.block meta Examknow 3 days')
-"""Blocks a user locally on the specified wiki"""
+module.commands('block')
+module.example('.block meta Examknow 3 days')
 def localblock(bot, trigger, username, password, Site):
-	if trigger.nick in stewards or trigger.nick in cvt:    
+	if trigger.account in stewards or trigger.account in cvt:
 		options = trigger.group(2).split(" ")
 		if len(options) == 2:
 			wiki = options[0]
@@ -54,15 +53,13 @@ def localblock(bot, trigger, username, password, Site):
 			for token in result['query']['tokens'].values():
 			tokens = token['csrftoken']
 			api(block, http_method='POST', format='json', user=target, expiry=time, nocreate=1, autoblock=1)
+		else:
+			bot.reply('Syntax is .block <wiki> <target> <time>', trigger.sender)
 		
 		
 	else:
 		if trigger.account == '':
 			noaccount()
 		else:
-			bot.say('Access Denied: ' + trigger.account + ' (' + trigger.hostmask + ') is not in the trusted list. This incident will be' 
-			+ ' reported', trigger.sender)
+			bot.say('Access Denied: ' + trigger.account + ' (' + trigger.hostmask + ') is not in the trusted list. This incident will be reported.', trigger.sender)
 			bot.say('Security Alert: + trigger.account + ' (' + trigger.hostmask + ') ' attempted to use CVT on ' + trigger.sender, #ExamBot-logs)
-		
-
-
