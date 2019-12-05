@@ -10,9 +10,9 @@ import logging
 import mwclient
 import json
 logging.basicConfig(level=logging.WARNING)
-with open('/data/project/exambot/sopel/modules/config/trusted.json') as trusted_list:
+with open('/mnt/nfs/labstore-secondary-tools-project/exambot/exambot/sopel/modules/config/trusted.json') as trusted_list:
     list = json.load(trusted_list)
-with open('/data/project/exambot/sopel/modules/config/config.json') as config_file:
+with open('/mnt/nfs/labstore-secondary-tools-project/exambot/exambot/sopel/modules/config/config.json') as config_file:
     config = json.load(config_file)
 
 stewards = list['stewards']
