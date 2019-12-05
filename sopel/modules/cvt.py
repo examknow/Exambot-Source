@@ -5,8 +5,6 @@
 #       OF THIS HEADER IS A VIOLATION OF THE COPYING LICENCE   #
 ################################################################
 
-import sopel
-from sopel import module
 from mwclient import Site
 import logging
 import mwclient
@@ -27,10 +25,13 @@ ua = 'ExamBot 3.0 (examknow@xtremebnc.ml)'
 
 def noaccount(bot, trigger):
 	bot.say(trigger.hostmask + ' is not identified with services. This incident will be reported', trigger.sender)
-	bot.say('Security Alert: ' + trigger.hostmask + ' on' + trigger.sender + ' attempted to use CVT without identifying with serivces.', #ExamBot-logs)
+	bot.say('Security Alert: ' + trigger.hostmask + ' on' + trigger.sender + ' attempted to use CVT without identifying with serivces.', '#ExamBot-logs')
 
-module.commands('block')
-module.example('.block meta Examknow 3 days')
+import sopel
+from sopel import module
+
+@module.commands('block')
+@module.example('.block meta Examknow 3 days')
 def localblock(bot, trigger, username, password, Site):
 	if trigger.account in stewards or trigger.account in cvt:
 		options = trigger.group(2).split(" ")
@@ -62,4 +63,4 @@ def localblock(bot, trigger, username, password, Site):
 			noaccount()
 		else:
 			bot.say('Access Denied: ' + trigger.account + ' (' + trigger.hostmask + ') is not in the trusted list. This incident will be reported.', trigger.sender)
-			bot.say('Security Alert: + trigger.account + ' (' + trigger.hostmask + ') ' attempted to use CVT on ' + trigger.sender, #ExamBot-logs)
+			bot.say('Security Alert: ' + trigger.account + ' (' + trigger.hostmask + ') ' attempted to use CVT on ' + trigger.sender, '#ExamBot-logs')
