@@ -63,4 +63,4 @@ def localblock(bot, trigger, username, password, Site):
 			noaccount()
 		else:
 			bot.say('Access Denied: ' + trigger.account + ' (' + trigger.hostmask + ') is not in the trusted list. This incident will be reported.', trigger.sender)
-			bot.say('Security Alert: ' + trigger.account + ' (' + trigger.hostmask + ') ' attempted to use CVT on ' + trigger.sender, '#ExamBot-logs')
+			bot.say('Security Alert: ' + trigger.account + ' (' + trigger.hostmask + ') attempted to use CVT on ' + trigger.sender, '#ExamBot-logs')
