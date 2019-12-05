@@ -42,8 +42,8 @@ def localblock(bot, trigger, username, password, Site):
 			site.login(username, password)
 			api(query, http_method='POST', format='json', meta='tokens')
 			for token in result['query']['tokens'].values():
-			tokens = token['csrftoken']
-			api(block, http_method='POST', format='json', user=target, expiry='3 days', nocreate=1, autoblock=1)
+				tokens = token['csrftoken']
+				site.api(block, http_method='POST', format='json', user=target, expiry='3 days', nocreate=1, autoblock=1, token=tokens)
 		elif len(options) > 2 and len(options) < 5:
 			wiki = options[0]
 			target = options[1]
@@ -52,8 +52,8 @@ def localblock(bot, trigger, username, password, Site):
 			site.login(username, password)
 			api(query, http_method='POST', format='json', meta='tokens')
 			for token in result['query']['tokens'].values():
-			tokens = token['csrftoken']
-			api(block, http_method='POST', format='json', user=target, expiry=time, nocreate=1, autoblock=1)
+				tokens = token['csrftoken']
+				site.api(block, http_method='POST', format='json', user=target, expiry=time, nocreate=1, autoblock=1, token=tokens)
 		else:
 			bot.reply('Syntax is .block <wiki> <target> <time>', trigger.sender)
 		
