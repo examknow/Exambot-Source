@@ -38,7 +38,7 @@ def mhphab(bot, trigger):
 
 @module.commands('mhphab')
 def wmphab(bot, trigger):
-        bot.reply('http://phabricator.wikimedia.org/' + trigger.group(2))
+        bot.reply('http://phabricator.wikimedia.org/' + trigger.group(2)
 
 @module.commands('mh')
 @module.example('.mh <wiki name> <page name>')
@@ -53,25 +53,4 @@ def mhwiki(bot, trigger):
             page = options[1]
             bot.say("https://" + wiki + ".miraheze.org/wiki/" + page)
     except AttributeError:
-        bot.say('Syntax: .mh wiki page', trigger.sender)
-
-@module.commands('wikipedia', 'wp')
-@module.example('.wikipedia <language> <page>')
-@module.example('.wikipedia en PHP')
-@module.example('.wp simple PHP')
-def wikipedia(bot, trigger):
-    try:
-        options = trigger.group(2).split(" ")
-        if len(options) == 1:
-            page = options[0]
-            bot.reply("https://simple.wikipedia.org/wiki/" + page)
-        elif len(options) == 2:
-            wiki = options[0]
-            page = options[1]
-            bot.relpy("https://" + wiki + ".wikipedia.org/wiki/" + page)
-    except AttributeError:
-        bot.say('Syntax: .wikipedia <language> <page>', trigger.sender)
-
-@module.commands('xbnc', 'xbncwiki', 'xtremebnc')
-def xbnc(bot, trigger):
-        bot.reply('http://xtremebnc.ml/index.php?title=' + trigger.group(2))
+        bot.say('Syntax is .mh wiki page', trigger.sender)
