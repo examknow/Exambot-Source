@@ -10,16 +10,17 @@ import logging
 import mwclient
 import json
 logging.basicConfig(level=logging.WARNING)
-with open('/mnt/nfs/labstore-secondary-tools-project/exambot/exambot/sopel/modules/config/trusted.json') as trusted_list:
-    list = json.load(trusted_list)
-with open('/mnt/nfs/labstore-secondary-tools-project/exambot/exambot/sopel/modules/config/config.json') as config_file:
-    config = json.load(config_file)
+#with open('/mnt/nfs/labstore-secondary-tools-project/exambot/exambot/sopel/modules/config/trusted.json') as trusted_list:
+ #   list = json.load(trusted_list)
+#with open('/mnt/nfs/labstore-secondary-tools-project/exambot/exambot/sopel/modules/config/config.json') as config_file:
+ #   config = json.load(config_file)
 
-stewards = list['stewards']
-cvt = list['cvt']
-sysadmins = list['sysadmins']
-username = config['username']
-password = config['password']
+#RF1 before you freak out, I am just in stewards for testing purposes
+stewards = ['Examknow', 'Voidwalker', 'JohnLewis', 'NDKilla']
+cvt = ['Zppix', 'Reception123']
+sysadmins = ['Zppix', 'paladox', 'Southparkfan', 'NDKilla', 'JohnLewis']
+username = 'ExamBot'
+password = <secret>
 wikis = config['wikis']
 ua = 'ExamBot 3.0 (examknow@xtremebnc.ml)'
 
